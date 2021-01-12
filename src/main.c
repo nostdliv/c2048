@@ -3,13 +3,15 @@
 #include <time.h>
 #include <string.h>
 
-#include <clearField.h>
-#include <drawField.h>
-#include <renderTileBorders.h>
-#include <renderTiles.h>
+#include <render/clearField.h>
+#include <render/drawField.h>
+#include <render/renderTileBorders.h>
+#include <render/renderTiles.h>
 
-#include <tryCreateNewTile.h>
-#include <tryMove.h>
+#include <tiles/tryCreateNewTile.h>
+#include <tiles/tryMove.h>
+
+#include <input/input.h>
 
 #include <def.h>
 
@@ -65,7 +67,12 @@ int main(int argc, char** argv) {
     renderTiles();
     drawField();
 
-    tryMove(MOVE_UP);
+    char* input = malloc(sizeof(char) * 4);
+    gets(input);
+
+    tryMove(inputToAction(input));
+
+    free(input);
 
     clearField();
     renderBorders();

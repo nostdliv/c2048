@@ -2,15 +2,17 @@
 #include <stdlib.h>
 #include <def.h>
 
-#include <drawField.h>
-
 extern uint* g_v_tiles_state;
 extern int g_cells;
 
 void _move(int* p_row);
 void _merge(int* p_row);
 
-int tryMove(enum MOVE move) {
+int tryMove(enum ACTION move) {
+    if ((move != MOVE_LEFT)  ||
+        (move != MOVE_RIGHT) ||
+        (move != MOVE_DOWN)  ||
+        (move != MOVE_UP)) return -2;
     // movements will be done row(column) by row(column)
     // with two functions written to make moves in the direction
     // of index increasing
