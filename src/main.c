@@ -11,7 +11,7 @@
 #include <tiles/tryCreateNewTile.h>
 #include <tiles/tryMove.h>
 
-#include <input/input.h>
+#include <input/handleInput.h>
 
 #include <def.h>
 
@@ -33,6 +33,8 @@ int g_cells;
 
 uint* g_v_tiles_state;
 char* g_v_field;
+
+struct game_state g_game_state = {0, 0};
 
 void renderBorders();
 
@@ -67,11 +69,10 @@ int main(int argc, char** argv) {
     renderTiles();
     drawField();
 
-    char* input = malloc(sizeof(char) * 4);
+    char* input = malloc(sizeof(char) * 5);
     gets(input);
 
-    printf("%d\n", inputToAction(input));
-    printf("%d\n", tryMove(inputToAction(input)));
+    //
 
     free(input);
 
@@ -98,4 +99,3 @@ void renderBorders() {
         g_v_field[i * g_field_size_x + g_field_size_x - 1] = g_border;
     }
 }
-

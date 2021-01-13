@@ -11,6 +11,11 @@ enum ACTION {
     EXIT
 };
 
+struct game_state {
+    int score;
+    char game_over;
+};
+
 #define SQR(x) (x*x)
 typedef unsigned int uint;
 

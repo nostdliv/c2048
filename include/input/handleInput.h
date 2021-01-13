@@ -4,7 +4,7 @@
 #include <def.h>
 #include <CStringLinkedList.h>
 
-enum ACTION inputToAction(const char* input);
+void handleInput(const char* input);
 
 typedef struct {
     enum ACTION action;
