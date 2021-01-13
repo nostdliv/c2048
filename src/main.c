@@ -71,7 +71,6 @@ int main(int argc, char** argv) {
     gets(input);
 
     printf("%d\n", inputToAction(input));
-    tryMove(inputToAction(input));
     printf("%d\n", tryMove(inputToAction(input)));
 
     free(input);

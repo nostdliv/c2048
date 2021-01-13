@@ -58,8 +58,8 @@ int tryMove(enum ACTION move) {
 
             // reverse copying y-th row into v_row
             for (int x = 0; x < g_cells; x++) {
-                v_row[x] = g_v_tiles_state[b_i - x - 1];
-                // identical to [b_i - (x + 1)]
+                v_row[x] = g_v_tiles_state[b_i + g_cells - x - 1];
+                // more readable: [(b_i + g_cells)- (x + 1)]
                 // like in MOVE_RIGHT, but reversed
             }
 
@@ -69,7 +69,7 @@ int tryMove(enum ACTION move) {
             _move(v_row);
 
             for (int x = 0; x < g_cells; x++) {
-                g_v_tiles_state[b_i - x - 1] = v_row[x];
+                g_v_tiles_state[b_i + g_cells - x - 1] = v_row[x];
                 // same logic as in reading loop
             }
         }
