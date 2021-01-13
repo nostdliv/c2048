@@ -6,7 +6,7 @@ extern uint* g_v_tiles_state;
 extern int g_cells;
 
 void _move(int* p_row);
-void _merge(int* p_row);
+int _merge(int* p_row);
 
 int tryMove(enum ACTION move) {
     if ((move != MOVE_LEFT)  &&
@@ -16,6 +16,8 @@ int tryMove(enum ACTION move) {
     // movements will be done row(column) by row(column)
     // with two functions written to make moves in the direction
     // of index increasing
+
+    int scoreInc = 0; // value to be added to global score
 
     // for that needs we allocating an array that will store
     // current row(column) to pass a pointer to movement functions
@@ -39,7 +41,8 @@ int tryMove(enum ACTION move) {
             }
 
             _move(v_row);
-            _merge(v_row);
+            scoreInc = _merge(v_row);
+            // calling move again, because merging could create empty tiles
             _move(v_row);
 
             for (int i = 0; i < g_cells; i++) {
@@ -61,7 +64,7 @@ int tryMove(enum ACTION move) {
             }
 
             _move(v_row);
-            _merge(v_row);
+            scoreInc = _merge(v_row);
             // calling move again, because merging could create empty tiles
             _move(v_row);
 
@@ -78,7 +81,7 @@ int tryMove(enum ACTION move) {
             }
             
             _move(v_row);
-            _merge(v_row);
+            scoreInc = _merge(v_row);
             // calling move again, because merging could create empty tiles
             _move(v_row);
 
@@ -95,7 +98,8 @@ int tryMove(enum ACTION move) {
             }
 
             _move(v_row);
-            _merge(v_row);
+            scoreInc = _merge(v_row);
+            // calling move again, because merging could create empty tiles
             _move(v_row);
 
             for (int y = 0; y < g_cells; y++) {
@@ -117,19 +121,22 @@ int tryMove(enum ACTION move) {
 
     free(v_tiles_before);
 
-    return !move_done; // if move done, return 0
+    if (move_done) return scoreInc;
+    else return -1;
 }
 
-void _merge(int* p_row) {
+int _merge(int* p_row) {
+    int sum = 0; // value that will be stored in scoreInc
     // merging two tiles if they are identical
     for (int i = g_cells - 1; i > 0; i--) {
         if (p_row[i] == p_row[i - 1] &&
                 p_row[i] != 0)
         {
-            p_row[i] *= 2;
+            sum += (p_row[i] *= 2);
             p_row[i - 1] = 0;
         }
     }
+    return sum;
 }
 
 void _move(int* p_row) {

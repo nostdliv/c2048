@@ -8,8 +8,7 @@ enum ACTION {
     MOVE_LEFT,
     MOVE_UP,
     RESTART,
-    EXIT,
-    CHANGE_TILES_COUNT
+    EXIT
 };
 
 #define SQR(x) (x*x)
