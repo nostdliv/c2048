@@ -70,7 +70,9 @@ int main(int argc, char** argv) {
     char* input = malloc(sizeof(char) * 4);
     gets(input);
 
+    printf("%d\n", inputToAction(input));
     tryMove(inputToAction(input));
+    printf("%d\n", tryMove(inputToAction(input)));
 
     free(input);
 
