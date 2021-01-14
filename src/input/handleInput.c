@@ -2,6 +2,7 @@
 
 #include <def.h>
 #include <input.h>
+#include <tiles.h>
 
 extern struct game_state g_game_state;
 

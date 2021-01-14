@@ -60,6 +60,7 @@ int main(int argc, char** argv) {
     tryCreateNewTile();
     
     while (!g_game_state.quit) {
+        printf("%d\n", g_game_state.score);
         clearField();
         renderBorders();
         renderTileBorders();
@@ -72,6 +73,8 @@ int main(int argc, char** argv) {
         handleInput(input);
 
         free(input);
+
+        tryCreateNewTile();
     }
 
     free(g_v_tiles_state);

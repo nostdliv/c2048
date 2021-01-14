@@ -17,7 +17,7 @@ int tryMove(enum ACTION move) {
     // with two functions written to make moves in the direction
     // of index increasing
 
-    int scoreInc = 0; // value to be added to global score
+    int score_inc = 0; // value to be added to global score
 
     // for that needs we allocating an array that will store
     // current row(column) to pass a pointer to movement functions
@@ -41,7 +41,7 @@ int tryMove(enum ACTION move) {
             }
 
             _move(v_row);
-            scoreInc = _merge(v_row);
+            score_inc += _merge(v_row);
             // calling move again, because merging could create empty tiles
             _move(v_row);
 
@@ -64,7 +64,7 @@ int tryMove(enum ACTION move) {
             }
 
             _move(v_row);
-            scoreInc = _merge(v_row);
+            score_inc += _merge(v_row);
             // calling move again, because merging could create empty tiles
             _move(v_row);
 
@@ -81,7 +81,7 @@ int tryMove(enum ACTION move) {
             }
             
             _move(v_row);
-            scoreInc = _merge(v_row);
+            score_inc += _merge(v_row);
             // calling move again, because merging could create empty tiles
             _move(v_row);
 
@@ -98,7 +98,7 @@ int tryMove(enum ACTION move) {
             }
 
             _move(v_row);
-            scoreInc = _merge(v_row);
+            score_inc += _merge(v_row);
             // calling move again, because merging could create empty tiles
             _move(v_row);
 
@@ -121,18 +121,19 @@ int tryMove(enum ACTION move) {
 
     free(v_tiles_before);
 
-    if (move_done) return scoreInc;
+    if (move_done) return score_inc;
     else return -1;
 }
 
 int _merge(int* p_row) {
-    int sum = 0; // value that will be stored in scoreInc
+    int sum = 0; // value that will be stored in score_inc
     // merging two tiles if they are identical
     for (int i = g_cells - 1; i > 0; i--) {
         if (p_row[i] == p_row[i - 1] &&
                 p_row[i] != 0)
         {
-            sum += (p_row[i] *= 2);
+            p_row[i] *= 2;
+            sum = p_row[i];
             p_row[i - 1] = 0;
         }
     }
