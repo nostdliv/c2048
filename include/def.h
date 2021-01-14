@@ -1,6 +1,12 @@
 #ifndef DEF_H
 #define DEF_H
 
+#ifdef WIN32
+#define CLEARSCREEN system("cls")
+#else
+#define CLEARSCREEN system("clear")
+#endif
+
 enum ACTION {
     INVALID_ACTION = -1,
     MOVE_RIGHT,

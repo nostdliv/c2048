@@ -60,6 +60,7 @@ int main(int argc, char** argv) {
     tryCreateNewTile();
     
     while (!g_game_state.quit) {
+        CLEARSCREEN;
         printf("%d\n", g_game_state.score);
         clearField();
         renderBorders();
