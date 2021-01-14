@@ -1,7 +1,7 @@
 #include <string.h>
 
 #include <def.h>
-#include <input/input.h>
+#include <input/handleInput.h>
 
 extern struct game_state g_game_state;
 
