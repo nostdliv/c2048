@@ -1,5 +1,5 @@
-#ifndef __DEF_H___
-#define __DEF_H___
+#ifndef DEF_H
+#define DEF_H
 
 enum ACTION {
     INVALID_ACTION = -1,

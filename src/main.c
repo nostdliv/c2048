@@ -3,10 +3,7 @@
 #include <time.h>
 #include <string.h>
 
-#include <render/clearField.h>
-#include <render/drawField.h>
-#include <render/renderTileBorders.h>
-#include <render/renderTiles.h>
+#include <render.h>
 
 #include <tiles/tryCreateNewTile.h>
 #include <tiles/tryMove.h>
