@@ -5,10 +5,9 @@
 
 #include <render.h>
 
-#include <tiles/tryCreateNewTile.h>
-#include <tiles/tryMove.h>
+#include <tiles.h>
 
-#include <input/handleInput.h>
+#include <input.h>
 
 #include <def.h>
 
