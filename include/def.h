@@ -13,7 +13,7 @@ enum ACTION {
 
 struct game_state {
     int score;
-    char game_over;
+    char quit;
 };
 
 #define SQR(x) (x*x)

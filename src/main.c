@@ -62,26 +62,21 @@ int main(int argc, char** argv) {
     // creating two inital tiles
     tryCreateNewTile();
     tryCreateNewTile();
-    // kinda game loop
+    
+    while (!g_game_state.quit) {
+        clearField();
+        renderBorders();
+        renderTileBorders();
+        renderTiles();
+        drawField();
 
-    renderBorders();
-    renderTileBorders();
-    renderTiles();
-    drawField();
+        char* input = malloc(sizeof(char) * 5);
+        gets(input);
 
-    char* input = malloc(sizeof(char) * 5);
-    gets(input);
+        handleInput(input);
 
-    //
-
-    free(input);
-
-    clearField();
-    renderBorders();
-    renderTileBorders();
-    renderTiles();
-    drawField();
-    // game loop end
+        free(input);
+    }
 
     free(g_v_tiles_state);
     free(g_v_field);

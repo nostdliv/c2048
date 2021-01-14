@@ -14,6 +14,20 @@ enum ACTION getActionFromString(const char* input) {
         !strcmp(input, "q") ? EXIT : INVALID_ACTION;
 }
 
-void handleInput(const char* input) {
+int handleInput(const char* input) {
     enum ACTION action = getActionFromString(input);
+    if ((action == MOVE_UP)     ||
+        (action == MOVE_LEFT)   ||
+        (action == MOVE_DOWN)   ||
+        (action == MOVE_RIGHT))
+    {
+        int ret = tryMove(action);
+        if (ret < 0) return 0; // move failed, no need to rerender
+        else {
+            g_game_state.score += ret;
+            return 1; // rerender needed
+        }
+    } else if (action == EXIT) {
+        g_game_state.quit = 1;
+    }
 }
