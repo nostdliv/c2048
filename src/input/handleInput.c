@@ -3,6 +3,7 @@
 #include <def.h>
 #include <input.h>
 #include <tiles.h>
+#include <game.h>
 
 extern struct game_state g_game_state;
 
@@ -12,6 +13,7 @@ enum ACTION getActionFromString(const char* input) {
         !strcmp(input, "a") ? MOVE_LEFT :
         !strcmp(input, "s") ? MOVE_DOWN :
         !strcmp(input, "d") ? MOVE_RIGHT :
+        !strcmp(input, "r") ? RESTART :
         !strcmp(input, "q") ? EXIT : INVALID_ACTION;
 }
 
@@ -28,6 +30,8 @@ int handleInput(const char* input) {
             g_game_state.score += ret;
             return 1; // rerender needed
         }
+    } else if (action == RESTART) {
+        gameOver();
     } else if (action == EXIT) {
         g_game_state.quit = 1;
     }

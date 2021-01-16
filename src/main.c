@@ -47,17 +47,17 @@ int main(int argc, char** argv) {
     } else {
         g_cells = CELLS;
     }
-    srand(time(0));
-    g_v_tiles_state = malloc(sizeof(int) * SQR(g_cells));
-        memset(g_v_tiles_state, 0, sizeof(int) * SQR(g_cells));
 
+    srand(time(0));
+
+    // text buffer to render to
     g_v_field = malloc(sizeof(int) * (g_field_size_x * g_field_size_y));
         memset(g_v_field, ' ', sizeof(int) * (g_field_size_x * g_field_size_y));
 
-
-    // creating two inital tiles
-    tryCreateNewTile();
-    tryCreateNewTile();
+    // array that will contain tiles state
+    g_v_tiles_state = malloc(sizeof(int) * SQR(g_cells));
+        // no memset because resetTiles() doing it anyway
+        resetTiles();
     
     while (!g_game_state.quit) {
         CLEARSCREEN;
@@ -74,7 +74,6 @@ int main(int argc, char** argv) {
         handleInput(input);
 
         free(input);
-
         tryCreateNewTile();
     }
 
