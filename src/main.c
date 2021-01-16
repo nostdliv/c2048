@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
         // no memset because resetTiles() doing it anyway
         resetTiles();
     
-    char rerender_needed; // will store the return value of handleInput();
+    char rerender_needed = 1; // will store the return value of handleInput();
 
     while (!g_game_state.quit) {
         if (rerender_needed) {
