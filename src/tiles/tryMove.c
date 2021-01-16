@@ -121,7 +121,7 @@ int tryMove(enum ACTION move) {
 
     free(v_tiles_before);
 
-    if (move_done) score_inc;
+    if (move_done) return score_inc;
     else return -1;
 }
 
