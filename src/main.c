@@ -59,19 +59,23 @@ int main(int argc, char** argv) {
         // no memset because resetTiles() doing it anyway
         resetTiles();
     
+    char rerender_needed; // will store the return value of handleInput();
+
     while (!g_game_state.quit) {
-        CLEARSCREEN;
-        printf("%d\n", g_game_state.score);
-        clearField();
-        renderBorders();
-        renderTileBorders();
-        renderTiles();
-        drawField();
+        if (rerender_needed) {
+            CLEARSCREEN;
+            printf("%d\n", g_game_state.score);
+            clearField();
+            renderBorders();
+            renderTileBorders();
+            renderTiles();
+            drawField();
+        }
 
         char* input = malloc(sizeof(char) * 5);
         gets(input);
 
-        handleInput(input);
+        rerender_needed = handleInput(input);
 
         free(input);
     }
