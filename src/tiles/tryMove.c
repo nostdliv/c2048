@@ -26,8 +26,11 @@ int tryMove(enum ACTION move) {
     // we will check initial g_v_tiles_state state
     // and compare it after all movement calls
     // if they are same (states), function will return 1
-    // to tell main that move in that direction can't be done
+    // to tell caller that move in that direction can't be done
     int* v_tiles_before = malloc(sizeof(int) * SQR(g_cells));
+    for (int i = 0; i < SQR(g_cells); i++) {
+        v_tiles_before[i] = g_v_tiles_state[i];
+    }
     char move_done = 0; // flag to be changed at the end
 
     if (move == MOVE_RIGHT) {
