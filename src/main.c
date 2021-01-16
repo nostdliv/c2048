@@ -74,7 +74,6 @@ int main(int argc, char** argv) {
         handleInput(input);
 
         free(input);
-        tryCreateNewTile();
     }
 
     free(g_v_tiles_state);

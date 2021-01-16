@@ -27,6 +27,7 @@ int handleInput(const char* input) {
         int ret = tryMove(action);
         if (ret < 0) return 0; // move failed, no need to rerender
         else {
+            tryCreateNewTile(); // move done succesfully, we need to create a new tile
             g_game_state.score += ret;
             return 1; // rerender needed
         }
