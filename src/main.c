@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
         }
 
         char* input = malloc(sizeof(char) * 5);
-        gets(input);
+        fgets(input, 2, stdin);
 
         rerender_needed = handleInput(input);
 

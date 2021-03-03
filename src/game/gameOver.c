@@ -19,7 +19,7 @@ void gameOver() {
 begin:
     CLEARSCREEN;
     printf("Game Over!\nYour score: %d\n\nPlay again? [y/n]: ", g_game_state.score);
-    gets(buf);
+    fgets(buf, 2, stdin);
     if (!strcmp(buf, "y")) {
         reset();
     } else if (!strcmp(buf, "n")) {
